@@ -1,0 +1,11 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">{{title}}</h5>
+    <hr>
+    <agm-map [zoom]="zoom">
+      <agm-marker *ngFor="let location of locations" [latitude]="location.latitude" [longitude]="location.longitude">
+        <agm-info-window [isOpen]="true">{{location.title}}</agm-info-window>
+      </agm-marker>
+    </agm-map>
+  </div>
+</div>
