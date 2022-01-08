@@ -16,9 +16,6 @@ export class IndexComponent implements OnInit {
   loader: Loader;
   locations: [];
 
-  lat = 51.678418;
-  lng = 7.809007;
-
   constructor(
     private jobService: JobService,
     private modalService: BsModalService
@@ -58,8 +55,6 @@ export class IndexComponent implements OnInit {
             longitude: item.longitude,
           };
         });
-
-        console.log(this.locations)
       })
       .finally(() => this.loader.hide());
   }
@@ -73,7 +68,7 @@ export class IndexComponent implements OnInit {
     const initialState = {
       model,
     };
-    const modal = this.modalService.show(ViewComponent, {
+    this.modalService.show(ViewComponent, {
       class: 'modal-lg modal-dialog-centered',
       backdrop: 'static',
       keyboard: false,

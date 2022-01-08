@@ -21,7 +21,6 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService
   ) {
-
   }
 
   ngOnInit(): void {
@@ -36,7 +35,6 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-
     this.form.markAllAsTouched();
     this.error = undefined;
 

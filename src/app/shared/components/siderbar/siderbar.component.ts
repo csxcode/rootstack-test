@@ -22,7 +22,7 @@ export class SiderbarComponent implements OnInit {
           code: "JOB",
           name: "Jobs",
           url: '/jobs',
-          icon: 'mdi-wallet-travel',
+          icon: 'mdi-map-marker-radius',
           order: 1,
           has_child: false,
       }

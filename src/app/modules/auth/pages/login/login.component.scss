@@ -2,6 +2,21 @@
   height: 40px;
 }
 
+.btn-login:hover {
+  background-color: #105293;
+  border: 1px solid var(--primary-green-light);
+}
+
+.btn-login:active {
+  background-color: #105293;
+  border: 1px solid var(--primary-green-light);
+}
+
+.btn-login:focus {
+  background-color: #105293;
+  border: 1px solid var(--primary-green-light);
+}
+
 .container-fluid-auth {
   background-color: var(--primary-green-light);
 }

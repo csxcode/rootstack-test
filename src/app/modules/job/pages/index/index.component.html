@@ -20,10 +20,10 @@
                             <tbody>
                                 <ng-container *ngIf="data">
                                     <tr *ngFor="let item of data.data | paginate: config">
-                                        <td align="center">{{item.date}}</td>
+                                        <td align="center">{{item.date | datetime }}</td>
                                         <td align="left">{{item.title}}</td>
                                         <td align="left">{{item.assigned_to}}</td>
-                                        <td align="left">{{item.status}}</td>
+                                        <td align="center">{{item.status}}</td>
                                         <td class="text-center">
                                             <div class="table-actions">
                                                 <button title="View" (click)="showForm(item)"

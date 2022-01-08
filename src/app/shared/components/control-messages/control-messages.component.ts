@@ -61,26 +61,19 @@ export class ControlMessagesComponent implements OnInit {
       let msg = '';
       switch ( errorName ) {
           case 'required':
-              msg = 'Campo obligatorio*';
+              msg = 'Field is required*';
               break;
           case 'email':
-              msg = 'El correo no es válido';
+              msg = 'Email does not valid';
               break;
           case 'pattern':
-              msg = 'No cumple con el formato permitido';
+              msg = 'Format does not valid';
               break;
           case 'minlength':
-              msg = `Debe tener al menos ${errorValue.requiredLength} caracteres`;
+              msg = `It must be at least ${errorValue.requiredLength} characters`;
               break;
           case 'maxlength':
-              msg = `Sólo se permiten ${errorValue.requiredLength} caracteres`;
-              break;
-          case 'file':
-              if ( errorValue.size ) {
-                  msg = `Máximo ${errorValue.size} MB`;
-              } else if ( errorValue.type ) {
-                  msg = `Solo se permiten archivos de tipo ${errorValue.type}`;
-              }
+              msg = `Only ${errorValue.requiredLength} characters allowed`;
               break;
           default:
               return '';

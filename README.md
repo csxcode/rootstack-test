@@ -30,3 +30,10 @@ mouseover, infowindow o combinación de las anteriores, como le parezca que sea
 más amigable al usuario)
 7. Mostrar la ubicación del usuario y su precisión.
 8. La interfaz del usuario puede ser simple.
+
+
+### Pasos para ejecutar el proyecto 
+```bash
+- npm run start
+Luego abra su navegador en http://localhost:4200
+```

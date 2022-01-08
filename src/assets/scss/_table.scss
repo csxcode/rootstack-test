@@ -12,8 +12,16 @@
             font-size: 11px;
             text-align: center;
             padding: 7px;
+            vertical-align: middle;
         }
     }
+    tbody {
+      td {
+          font-size: 11px;
+          padding: 0.35rem;
+          vertical-align: middle;
+      }
+  }
 }
 
 .ngx-pagination .current {

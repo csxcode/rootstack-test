@@ -14,6 +14,7 @@ import { MainLayoutComponent } from './layouts/main/main-layout.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AgmCoreModule } from '@agm/core';
 import { environment } from '@environments/environment';
+import { DatetimePipe } from './pipes/datetime.pipe';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { environment } from '@environments/environment';
     LoadingComponent,
     PaginatorComponent,
     MapComponent,
+    DatetimePipe,
   ],
   imports: [
     CommonModule,
@@ -46,7 +48,8 @@ import { environment } from '@environments/environment';
     SiderbarComponent,
     LoadingComponent,
     PaginatorComponent,
-    MapComponent
+    MapComponent,
+    DatetimePipe
   ]
 })
 export class SharedComponentsModule { }
