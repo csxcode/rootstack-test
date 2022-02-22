@@ -13,6 +13,6 @@ export class JobService  {
   }
 
   search(params: any): Promise<any>{
-    return firstValueFrom(this.http.get("http://localhost:8080/v1/persons", { params }));
+    return firstValueFrom(this.http.get(this.url, { params }));
   }
 }

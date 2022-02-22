@@ -3,7 +3,6 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { JobService } from '../../services/job.service';
 import { Loader } from '@shared/utils/loader';
 import { ViewComponent } from '../../components/view/view.component';
-import { Utils } from '../../../../shared/utils/utils';
 
 @Component({
   selector: 'app-index',
@@ -11,21 +10,11 @@ import { Utils } from '../../../../shared/utils/utils';
   styleUrls: ['./index.component.scss'],
 })
 export class IndexComponent implements OnInit {
+  filter: any = { limit: 10 };
+  data: any;
+  config: any;
   loader: Loader;
-  data: any[];
-
-  filter: any = {
-    page: 1,
-    limit: 12,
-    id: null,
-    search: null
-  };
-  pagination: any = {
-      itemsPerPage: 1,
-      currentPage: 1,
-      totalItems: 0,
-      totalPages: 0,
-  };
+  locations: [];
 
   constructor(
     private jobService: JobService,
@@ -34,48 +23,45 @@ export class IndexComponent implements OnInit {
     this.loader = new Loader();
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getData();
   }
 
-  getData(page?: number) {
-    this.data = [];
-
-    this.filter = Utils.removeEmpty(this.filter);
-    this.filter.page = page ? page : 1;
-    this.loader.show();
-
-    this.jobService.search(this.filter).then(
-      (response: any) => {
-        let {items, meta} = response.data;
-
-        this.data = items;
-        this.setMetaPagination(meta);
-        this.loader.hide()
-      },
-      (err) => {
-        this.loader.hide()
-      }
-    );
-  }
-
-  setMetaPagination(meta) {
-    this.pagination = {
-      itemsPerPage: meta.items_per_page,
-      currentPage: meta.current_page,
-      totalItems: meta.total_items,
-      totalPages: meta.total_pages,
+  changeConfig(data) {
+    this.config = {
+      itemsPerPage: data.per_page,
+      currentPage: data.current_page,
+      totalItems: data.total,
     };
   }
 
-  pageChanged(e) {
-    this.pagination.currentPage = e;
-    this.getData(e);
+  getData(page?: number) {
+    this.locations = [];
+    if (this.data) {
+      this.data.data = [];
+    }
+
+    this.loader.show();
+    this.filter.page = page ? page : 1;
+    this.jobService
+      .search(this.filter)
+      .then((res: any) => {
+        this.changeConfig(res);
+        this.data = res;
+        this.locations = res.data.map((item) => {
+          return {
+            title: item.title,
+            latitude: item.latitude,
+            longitude: item.longitude,
+          };
+        });
+      })
+      .finally(() => this.loader.hide());
   }
 
-  clearFilters() {
-    this.filter.search = null;
-    this.getData();
+  pageChanged(e) {
+    this.config.currentPage = e;
+    this.getData(e);
   }
 
   showForm(model?: any) {

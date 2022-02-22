@@ -1,10 +1,10 @@
-<div class="row paginator w-100" *ngIf="data != undefined">
-  <div class="col-md-12 text-center" *ngIf="!data.totalItems && !isBusy">
+<div class="row paginator w-100" *ngIf="data">
+  <div class="col-md-12 text-center" *ngIf="!data.data.length && !isBusy">
     <p> No se encontraron registros que coincidan con la búsqueda</p>
   </div>
   <div class="col-md-6 d-flex perpage">
     <ng-container *ngIf="filter && filter.limit">
-      <p class="my-auto" for="paginator" style="color: #495057; font-weight: 500;">Total: {{data.totalItems}} registro(s)</p>
+      <p class="my-auto" for="paginator" style="color: #495057; font-weight: 500;">Total: {{data.total}} registro(s)</p>
     </ng-container>
   </div>
   <div class="col-md-6 text-right">
