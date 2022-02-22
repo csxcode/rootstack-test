@@ -19,7 +19,7 @@
                             </thead>
                             <tbody>
                                 <ng-container *ngIf="data">
-                                    <tr *ngFor="let item of data.data | paginate: config">
+                                    <tr *ngFor="let item of data | paginate: pagination">
                                         <td align="center">{{item.date | datetime }}</td>
                                         <td align="left">{{item.title}}</td>
                                         <td align="left">{{item.assigned_to}}</td>
@@ -39,7 +39,7 @@
                         <ng-container *ngIf="loader.isBusy()">
                             <app-loading [size]="0"></app-loading>
                         </ng-container>
-                        <app-paginator [data]="data" [filter]="filter" [isBusy]="loader.isBusy()"
+                        <app-paginator [data]="pagination" [filter]="filter" [isBusy]="loader.isBusy()"
                             (changePerPage)="getData()" (changePage)="pageChanged($event)">
                         </app-paginator>
                     </div>
@@ -51,9 +51,4 @@
     </div>
   </div>
 
-  <div class="row" *ngIf="locations.length > 0">
-    <div class="col-12 pt-5">
-      <app-map title="Map to show the location of the jobs listed" [locations]="locations" [zoom]="1"></app-map>
-    </div>
-  </div>
 </div>

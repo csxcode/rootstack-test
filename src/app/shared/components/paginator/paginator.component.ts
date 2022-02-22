@@ -1,6 +1,5 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 
-
 @Component({
   selector: 'app-paginator',
   templateUrl: './paginator.component.html',
